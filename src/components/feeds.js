@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
+let x = 1;
+let y = 0;
 
 export default function AlignItemsList({props}) {
   const classes = useStyles();
@@ -29,6 +30,12 @@ export default function AlignItemsList({props}) {
     data: null,
   });
   
+  const handleClick = () => {
+    localStorage.setItem('tweet', x);
+    console.log(x)
+    x++
+    
+  }
   useEffect(() => {
     const apiUrl = 'https://sportscentral.io/api/popular-tweets';
     fetch(apiUrl)
@@ -38,16 +45,14 @@ export default function AlignItemsList({props}) {
       });
   }, []);
 
-  const handleClick = (x) => {
-    console.log(x)
-  }
   return (
       <div>
     {appState.loading ? <div></div> :
         <List className={classes.root}>
         {appState.data.map((item) => 
         <div key={item.id}>
-        <ListItem alignItems="flex-start" button onClick={handleClick(item.description)}>
+
+        <ListItem alignItems="flex-start" button onClick={() => handleClick()}>
         <ListItemAvatar>
           <Avatar src={item.additional.tweeet.user.profile_image_url} />
         </ListItemAvatar>
