@@ -26,11 +26,11 @@ export default function Details({props}) {
       {detailState.loading ? <div></div> :
       <Container fixed>
         <Typography variant="h2" gutterBottom>
-          {detailState.data[1].additional.tweeet.user.name}
+          {detailState.data[0].additional.tweeet.user.name}
         </Typography>
-        <img src={detailState.data[1].additional.media[0].media_url} alt="Logo" width="100%" />
+        <img src={detailState.data[0].additional.media[0].media_url} alt="Logo" width="100%" />
         <Typography variant="body2" align="left">
-          {detailState.data[1].additional.tweeet.full_text}
+          {detailState.data[0].additional.tweeet.full_text}
         </Typography>
       </Container>
         }
